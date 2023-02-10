@@ -4,7 +4,7 @@
 #include <cmath>
 #include "kmap.cpp"//top();
 using namespace std;
-struct state_2{//2­Óªºkmap­nª`·N 
+struct state_2{//2å€‹çš„kmapè¦æ³¨æ„ 
 	vector<string>prd_term;//ex:1 2 0
 	vector<bool>if_one_term;
 	vector<bool>if_repeat;       
@@ -13,10 +13,10 @@ struct state_2{//2­Óªºkmap­nª`·N
 };
 struct save_check_N{
 	string term;
-	//int index;//¥Î¥»¨­ªºindex¥h¥N´À´N¦n 
+	//int index;//ç”¨æœ¬èº«çš„indexå»ä»£æ›¿å°±å¥½ 
 }; 
-vector<char>out_var_name;//outputªºÅÜ¼Æ 
-vector<char>variable_name;//in&psªºÅÜ¼Æ 
+vector<char>out_var_name;//outputçš„è®Šæ•¸ 
+vector<char>variable_name;//in&psçš„è®Šæ•¸ 
 vector<bool>check_compl;
 void swap(vector<char>&myvec){
 	for(int i=0;i<myvec.size();i++){
@@ -271,7 +271,7 @@ int main(){
 			out_n=0; 
 		}
 	}
-	//----out_vec«Å§i 
+	//----out_vecå®£å‘Š 
 	//cout<<"out_n"<<out_n<<endl;
 	
 	const int a=pow(2,in_n+ps_n);
@@ -325,27 +325,27 @@ int main(){
 //		}
 //		cout<<endl;
 //	}
-	//----------­«±Æ-------------------------------------
+	//----------é‡æ’-------------------------------------
 	
 	if(ps_n!=1||in_n!=1){
 		if(ns_n==1){
 			swap(ns_vec_1);
 		}
 		else if(ns_n==2){
-			swap(ns_vec_1);//¼gÀÉ¤§«e¦A¥Î§Y¥i 
+			swap(ns_vec_1);//å¯«æª”ä¹‹å‰å†ç”¨å³å¯ 
 			swap(ns_vec_2);
 		}
 		else if(ns_n==3){
-			swap(ns_vec_1);//¼gÀÉ¤§«e¦A¥Î§Y¥i 
+			swap(ns_vec_1);//å¯«æª”ä¹‹å‰å†ç”¨å³å¯ 
 			swap(ns_vec_2);
-			swap(ns_vec_3);//¼gÀÉ¤§«e¦A¥Î§Y¥i 
+			swap(ns_vec_3);//å¯«æª”ä¹‹å‰å†ç”¨å³å¯ 
 		}
-		//¨¾§b¥¼§¹¦¨!!! 
+		//é˜²å‘†æœªå®Œæˆ!!! 
 	}
 	
 	ofstream outfile("kmap_in.txt",ios::out);
 	outfile<<ns_n+out_n<<endl;
-	//¼gns ªºvariable 
+	//å¯«ns çš„variable 
 	if(ns_n==1){
 		outfile<<in_n+ps_n<<endl;
 		for(int i=0;i<ns_vec_1.size();i++){
@@ -403,7 +403,7 @@ int main(){
 	//------------------------------------------------------------
 	top();
 	//------------------------------------------------------------
-	//§ìÅÜ¼Æin&ns
+	//æŠ“è®Šæ•¸in&ns
 	
 	for(int i=0;i<ps_line.length();i++){
 		if(ps_line[i-1]=='('&&ps_line[i+1]==','){
@@ -471,7 +471,7 @@ int main(){
 		}
 	} 
 	stage_data[stage_n-1].prd_term.pop_back();
-	//cout<<"stage_data[stage_n-1].prd_termªº¤j¤p"<<endl;
+	//cout<<"stage_data[stage_n-1].prd_termçš„å¤§å°"<<endl;
 //	for(int i=0;i<stage_data.size();i++){
 //		//cout<<stage_data[i].prd_term.size()<<endl;
 //	} 
@@ -484,7 +484,7 @@ int main(){
 //	}
 	//cout<<"here 6"<<endl;
 
-//------------------¶}©l°µexpression-------------------------
+//------------------é–‹å§‹åšexpression-------------------------
 	cout<<"Please input the name of the circuit diagram"<<endl; 
 	cin>>out_name; 
 	ofstream outfile2(out_name,ios::out);
@@ -509,7 +509,7 @@ int main(){
 	for(int i=0;i<ns_n+out_n;i++){
 		for(int j=0;j<stage_data[i].prd_term.size();j++){
 			rp=0;
-			for(int m=0;m<i;m++){			//¥u­n©M¤ñ¦Û¤v«e­±ªº´X¦æ¤ñ§Y¥i 
+			for(int m=0;m<i;m++){			//åªè¦å’Œæ¯”è‡ªå·±å‰é¢çš„å¹¾è¡Œæ¯”å³å¯ 
 				for(int k=0;k<stage_data[m].prd_term.size();k++){
 					if(stage_data[i].prd_term[j]==stage_data[m].prd_term[k]){
 						//cout<<"i j"<<i<<" "<<j<<endl;
@@ -618,29 +618,29 @@ int main(){
 //		}
 //		cout<<endl;
 //	}
-	//---------------------------Nªº¿é¥X------------------------------------- 
+	//---------------------------Nçš„è¼¸å‡º------------------------------------- 
 	vector<int>save_gate_times(out_n+ns_n);
 	for(int i=0;i<out_n+ns_n;i++){
-		save_gate_times[i]=0;//­t³d°O¿ı¶]¤F´X¦¸¡A¥Ø«e¤wªì©l¤Æ 
+		save_gate_times[i]=0;//è² è²¬è¨˜éŒ„è·‘äº†å¹¾æ¬¡ï¼Œç›®å‰å·²åˆå§‹åŒ– 
 	}
-	//---------------------------½T»{¦¸¼Æ------------------------------ 
+	//---------------------------ç¢ºèªæ¬¡æ•¸------------------------------ 
 	for(int i=0;i<ns_n+out_n;i++){
 		int ct_comma=0;
 		for(int j=0;j<stage_data[i].prd_term.size();j++){
 			for(int k=0;k<find_N.size();k++){
 				if(stage_data[i].prd_term[j]==find_N[k].term){
-					//cout<<"¤W¥b³¡"<<endl; 
+					//cout<<"ä¸ŠåŠéƒ¨"<<endl; 
 					ct_comma++;
 				}
 			} 
 			if(stage_data[i].if_one_term[j]==1){
 				for(int k=0;k<stage_data[i].prd_term[j].size();k++){
 					if(stage_data[i].prd_term[j][k]=='0'){
-						//cout<<"¤U¥b³¡"<<endl; 
+						//cout<<"ä¸‹åŠéƒ¨"<<endl; 
 						ct_comma++;
 					}
 					else if(stage_data[i].prd_term[j][k]=='1'){
-						//cout<<"¤U¥b³¡"<<endl; 
+						//cout<<"ä¸‹åŠéƒ¨"<<endl; 
 						ct_comma++;
 					}	
 				}	
@@ -651,7 +651,7 @@ int main(){
 //	for(int i=0;i<save_gate_times.size();i++){
 //		cout<<save_gate_times[i]<<endl;
 //	}
-	//---------------------------§¹¦¨³Ñ¤Uªº¿é¥X------------------------------ 
+	//---------------------------å®Œæˆå‰©ä¸‹çš„è¼¸å‡º------------------------------ 
 	int and_gate_n=find_N.size();
 	int or_gate_n=0;
 	for(int i=0;i<save_gate_times.size();i++){
@@ -690,10 +690,10 @@ int main(){
 			}
 		}
 	}
-	//-----------------------½T»{AND2ªº³r¸¹------------------------------------------------
+	//-----------------------ç¢ºèªAND2çš„é€—è™Ÿ------------------------------------------------
 	vector<int>save_nod_times(find_N.size());
 	for(int i=0;i<find_N.size();i++){
-		save_nod_times[i]=0;//­t³d°O¿ı¶]¤F´X¦¸¡A¥Ø«e¤wªì©l¤Æ 
+		save_nod_times[i]=0;//è² è²¬è¨˜éŒ„è·‘äº†å¹¾æ¬¡ï¼Œç›®å‰å·²åˆå§‹åŒ– 
 	}
 	
 	for(int i=0;i<find_N.size();i++){
